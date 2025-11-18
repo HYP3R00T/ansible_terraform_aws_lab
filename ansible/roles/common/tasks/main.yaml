@@ -1,0 +1,16 @@
+- name: Ensure baseline packages are installed
+  package:
+    name:
+      - curl
+      - git
+      - vim
+    state: present
+
+- name: Ensure deploy user exists
+  user:
+    name: deployer
+    groups: sudo
+    create_home: yes
+    shell: /bin/bash
+    state: present
+  ignore_errors: true

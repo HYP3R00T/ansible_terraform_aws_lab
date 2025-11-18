@@ -1,0 +1,26 @@
+- name: Install nginx (distro-agnostic)
+  package:
+    name: nginx
+    state: present
+  notify: restart nginx
+
+- name: Ensure nginx service is enabled & running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Deploy index.html template into the actual webroot
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: www-data
+    group: www-data
+    mode: "0644"
+  notify: reload nginx
+
+- name: Ensure nginx is enabled and started
+  service:
+    name: nginx
+    state: started
+    enabled: yes

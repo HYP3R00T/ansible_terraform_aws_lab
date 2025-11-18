@@ -1,0 +1,11 @@
+- name: Site playbook - baseline + webserver
+  hosts: all
+  become: true
+  roles:
+    - common
+
+- name: Configure web servers
+  hosts: webservers
+  become: true
+  roles:
+    - webserver
