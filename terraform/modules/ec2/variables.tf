@@ -18,6 +18,12 @@ variable "public_key_path" {
   type        = string
 }
 
+variable "ami" {
+  description = "AMI of Linux distro"
+  type        = string
+  default     = "ami-0ecb62995f68bb549"
+}
+
 variable "instance_count" {
   description = "Number of instances to create"
   type        = number

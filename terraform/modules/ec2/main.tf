@@ -33,7 +33,7 @@ resource "aws_security_group" "this" {
 # EC2 instances (count-based)
 resource "aws_instance" "this" {
   count         = var.instance_count
-  ami           = "ami-0ecb62995f68bb549"
+  ami           = var.ami
   instance_type = var.instance_type
   key_name      = aws_key_pair.this.key_name
   vpc_security_group_ids = [aws_security_group.this.id]
